@@ -22,7 +22,7 @@ for carpeta in carpetas:
         cv2.imwrite(os.path.join(carpeta, f'{nombre_base}_oscuro.jpg'), rostro_menos_iluminacion)
 
         # Agregar desenfoque gausiano
-        rostro_con_ruido = cv2.GaussianBlur(img, (5, 5), 0)
+        rostro_con_ruido = cv2.GaussianBlur(img, (5, 5), 5)
         cv2.imwrite(os.path.join(carpeta, f'{nombre_base}_ruido.jpg'), rostro_con_ruido)
 
         # Espejo

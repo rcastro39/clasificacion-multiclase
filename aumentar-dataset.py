@@ -12,6 +12,8 @@ for carpeta in carpetas:
             continue
 
         nombre_base = archivo.split('.')[0]
+        if "iluminado" in nombre_base or "oscuro" in nombre_base or "ruido" in nombre_base or "espejo" in nombre_base or "rotado" in nombre_base:
+            continue
 
         # Aumentar iluminacion
         rostro_mas_iluminacion = cv2.convertScaleAbs(img, alpha=1.5, beta=0)
@@ -28,3 +30,7 @@ for carpeta in carpetas:
         # Espejo
         rostro_espejo = cv2.flip(img, 1)
         cv2.imwrite(os.path.join(carpeta, f'{nombre_base}_espejo.jpg'), rostro_espejo)
+
+        # Rotar imagen 90°
+        rostro_rotado = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+        cv2.imwrite(os.path.join(carpeta, f'{nombre_base}_rotado.jpg'), rostro_rotado)
